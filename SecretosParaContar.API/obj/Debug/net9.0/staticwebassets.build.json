@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "cKVtdRz6fnhUJT+UZlUl44DEfe4B+90rCAvl774zzK8=",
+  "Source": "SecretosParaContar.API",
+  "BasePath": "_content/SecretosParaContar.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
