@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Secretos",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

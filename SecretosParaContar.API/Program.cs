@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,8 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+{
 
-
+builder.Services.AddDbContext<SecretoContext>(
+    opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("SecretosDataBase"))
+);
+}
 // TODO: Hacer inyección de dependencias y patron singleton
 
 var app = builder.Build();

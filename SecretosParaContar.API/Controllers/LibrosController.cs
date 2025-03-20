@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-// using SecretosParaContar.Business.interfaces;
-// using SecretosParaContar.Business.Service;
-// using SecretosParaContar.Data.Models;
-// using SecretosParaContar.Data;
+using SecretosParaContar.Business.interfaces;
+using SecretosParaContar.Business.Service;
+using SecretosParaContar.Data.Models;
+using SecretosParaContar.Data;
 
 namespace SecretosParaContar.API.Controller
 
@@ -17,42 +17,42 @@ namespace SecretosParaContar.API.Controller
     public class LibrosController : ControllerBase
 
     {
-        // private readonly ILibroService _libroService;
+        private readonly ILibroService _libroService;
 
-        // public LibrosController(ILibroService libroService)
-        // {
-        //     _libroService = libroService;
-        // }
+        public LibrosController(ILibroService libroService)
+        {
+            _libroService = libroService;
+        }
 
         [HttpGet]
         [Route("GetLibros")]
         
         public async Task<IActionResult> GetLibros()
         {
-            // var libros = await _libroService.GetList();
-            // return Ok(libros);
-            return Ok("Hola");
+            var libros = await _libroService.GetList();
+            return Ok(libros);
+    
         }
         
-        // [HttpPost]
-        // [Route("AddLibros")]
+        [HttpPost]
+        [Route("AddLibros")]
         
-        // public async Task<IActionResult> AddLibros(Libros libro)
-        // {
-        //     var result = await _libroService.AddLibro(libro);
-        //     return Ok(result);
-        // }
+        public async Task<IActionResult> AddLibros(Libros libro)
+        {
+             var result = await _libroService.AddLibro(libro);
+            return Ok(result);
+         }
 
-        // [HttpGet("GetLibrosName")]
+         [HttpGet("GetLibrosName")]
         
-        // public async Task<IActionResult> GetLibrosName(string name)
-        // {
-        //     var result = await _libroService.FindByName(name);
+        public async Task<IActionResult> GetLibrosName(string name)
+         {
+            var result = await _libroService.FindByName(name);
 
-        //     return result.TotalElements > 0 ?
-        //     Ok(result) :
-        //     NotFound(result);
-        // }
+             return result.TotalElements > 0 ?
+             Ok(result) :
+             NotFound(result);
+         }
 
     }
 }
