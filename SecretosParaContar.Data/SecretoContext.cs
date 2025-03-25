@@ -13,6 +13,8 @@ public class SecretoContext : DbContext
 
     public DbSet<Libros> libros {get;set;}
 
+    public DbSet<Donacion> Donaciones {get;set;}
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         if(builder == null)

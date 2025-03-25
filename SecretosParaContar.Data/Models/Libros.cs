@@ -10,6 +10,10 @@ public class Libros: BaseEntity<int>
 
     public int Year {get; set;}
 
+    public int Title {get; set;}
+
+    public int Summary {get; set;}
+
     public Genre Genre {get; set;} = Genre.Unknown;
     [ForeignKey ("Autor")]
 
