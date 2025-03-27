@@ -6,7 +6,7 @@ namespace SecretosParaContar.Data.Models;
 public class Autor : BaseEntity<int>
 {
 
-    public string name { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
 
     public string Label { get; set; } = string.Empty;
 

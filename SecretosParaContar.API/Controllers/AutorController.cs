@@ -21,7 +21,7 @@ public class AutorController : ControllerBase
 
     public async Task<IActionResult> GetById (int id)
     {
-        var autor = await _autorService.FinById(id);
+        var autor = await _autorService.FindById(id);
         return  Ok(autor);
     }
 }
