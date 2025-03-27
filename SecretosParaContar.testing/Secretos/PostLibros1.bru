@@ -1,0 +1,22 @@
+meta {
+  name: PostLibros1
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:5101/Api/Libros/AddLibros
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Historias de la cultura",
+    "year": 2018,
+    "genre": 4,
+    "autorId": 3,
+    "summary": "Un viaje a través de las costumbres y tradiciones del mundo.",
+    "title": "El legado de la humanidad"
+  }
+}

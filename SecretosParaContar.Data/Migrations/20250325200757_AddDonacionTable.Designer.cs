@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace SecretosParaContar.Data.Migrations
 {
     [DbContext(typeof(SecretoContext))]
-    partial class SecretoContextModelSnapshot : ModelSnapshot
+    [Migration("20250325200757_AddDonacionTable")]
+    partial class AddDonacionTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +39,7 @@ namespace SecretosParaContar.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -85,40 +88,13 @@ namespace SecretosParaContar.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AudiobookLink")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<int>("AutorId")
                         .HasColumnType("integer");
-
-                    b.Property<string>("Cover")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("DownloadLink")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Editorial")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<int>("Genre")
                         .HasColumnType("integer");
 
-                    b.Property<string>("PdfLink")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int?>("Rating")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Summary")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Title")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 

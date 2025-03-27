@@ -18,8 +18,11 @@ public class LibroService : ILibroService
     }
 
 public async Task<BaseMessage<Libros>> AddLibro (Libros libro)
+
+
  {
     var isValid = ValidateModel (libro);
+    
     if (!string.IsNullOrEmpty (isValid))
     {
         return BuildResponse (null, isValid, HttpStatusCode.BadRequest, new());
@@ -28,6 +31,7 @@ public async Task<BaseMessage<Libros>> AddLibro (Libros libro)
     try {
         await _unitOfWork.LibroRepository.AddAsync(libro);
         await _unitOfWork.SaveAsync();
+        
     }
     catch (Exception ex) {
         return new BaseMessage<Libros>() {
@@ -56,16 +60,16 @@ public async Task<BaseMessage<Libros>> AddLibro (Libros libro)
         
  }
 
-public async Task<BaseMessage<Libros>> FindByName (string name)
+public async Task<BaseMessage<Libros>> FindByName (string Title)
 {
-    var lista = await _unitOfWork.LibroRepository.GetAllAsync(x => x.Name.ToLower().Contains(name.ToLower()));
+    var lista = await _unitOfWork.LibroRepository.GetAllAsync(x => x.Title.ToLower().Contains(Title.ToLower()));
     return lista.Any() ?  BuildResponse(lista.ToList(), "", HttpStatusCode.OK, lista.Count()) : 
             BuildResponse(lista.ToList(), "", HttpStatusCode.NotFound, 0);
 }
 
 public async Task<BaseMessage<Libros>> FindByPropesties (string name, int year)
     {
-      var lista = await _unitOfWork.LibroRepository.GetAllAsync(x => x.Name.Contains(name) && x.Year == year);
+      var lista = await _unitOfWork.LibroRepository.GetAllAsync(x => x.Title.Contains(name) && x.Year == year);
         return lista.Any() ?  BuildResponse(lista.ToList(), "", HttpStatusCode.OK, lista.Count()) : 
             BuildResponse(lista.ToList(), "", HttpStatusCode.NotFound, 0);
     }
@@ -89,7 +93,7 @@ private BaseMessage<Libros> BuildResponse(List<Libros> lista, string message =""
 
 private string ValidateModel(Libros libro) {
     string message = string.Empty;
-    if (string.IsNullOrEmpty(libro.Name))
+    if (string.IsNullOrEmpty(libro.Title))
     {
         message += "El nombre es requerido";
     }
