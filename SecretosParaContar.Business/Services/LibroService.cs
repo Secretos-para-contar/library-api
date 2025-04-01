@@ -10,7 +10,7 @@ public class LibroService : ILibroService
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    private List<Libros> _listaLibros = new();
+    // private List<Libros> _listaLibros = new();
 
     public LibroService(IUnitOfWork unitOfWork)
     {
@@ -18,7 +18,6 @@ public class LibroService : ILibroService
     }
 
 public async Task<BaseMessage<Libros>> AddLibro (Libros libro)
-
 
  {
     var isValid = ValidateModel (libro);
@@ -77,8 +76,9 @@ public async Task<BaseMessage<Libros>> FindByPropesties (string name, int year)
 public async Task<BaseMessage<Libros>> GetList()
     {
         var lista = await _unitOfWork.LibroRepository.GetAllAsync();
-        return lista.Any() ?  BuildResponse(lista.ToList(), "", HttpStatusCode.OK, lista.Count()) : 
-            BuildResponse(lista.ToList(), "", HttpStatusCode.NotFound, 0);
+        return BuildResponse(lista.ToList(), "", 
+            lista.Any() ? HttpStatusCode.OK : HttpStatusCode.NotFound, 
+            lista.Count());
     }
 
 private BaseMessage<Libros> BuildResponse(List<Libros> lista, string message ="", HttpStatusCode status = HttpStatusCode.OK, int TotalElements =0)
