@@ -3,6 +3,7 @@ using SecretosParaContar.Business.interfaces;
 using SecretosParaContar.Business.Service;
 using SecretosParaContar.Data.Models;
 using SecretosParaContar.Data;
+using System.Net;
 
 namespace SecretosParaContar.API.Controller
 
@@ -53,8 +54,14 @@ namespace SecretosParaContar.API.Controller
              Ok(result) :
              NotFound(result);
          }
-
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById(int id)
+         {
+            var result = await _libroService.GetById(id);
+    
+            return result.TotalElements > 0 ? 
+            Ok(result) : 
+            NotFound(result);
+        }
     }
-}
-
-
+};

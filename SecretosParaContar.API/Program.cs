@@ -4,7 +4,7 @@ using SecretosParaContar.Business.interfaces;
 using SecretosParaContar.Business.Service;
 using SecretosParaContar.Data;
 using SecretosParaContar.Data.Repositories;
-using SecretosParaContar.Business.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +20,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ILibroService, LibroService>();
 builder.Services.AddScoped<IAutorService, AutorService>();
 builder.Services.AddScoped<IDonacionRepository, DonacionRepository>();
-builder.Services.AddSingleton<DownloadService>();
+
 
 
 

@@ -1,13 +1,17 @@
 meta {
-  name: GetLibro
+  name: GetAutor
   type: http
   seq: 3
 }
 
 get {
-  url: http://localhost:5101/Api/Libros/GetLibros
+  url: http://localhost:5101/api/Autor/GetById?id=2
   body: json
   auth: inherit
+}
+
+params:query {
+  id: 2
 }
 
 body:json {

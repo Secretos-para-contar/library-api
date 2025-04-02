@@ -11,6 +11,8 @@ public interface ILibroService
 
     Task<BaseMessage<Libros>> FindById(int id);
 
+    Task<BaseMessage<Libros>> GetById(int id);
+
     Task<BaseMessage<Libros>> FindByName(string name);
 
     Task<BaseMessage<Libros>> FindByPropesties (string name, int year);
@@ -18,6 +20,8 @@ public interface ILibroService
      #region Learning to Test
     Task<string> HealthCheckTest();
     Task<string> TestAlbumCreation(Libros libro);
+
+    
     
     #endregion
 

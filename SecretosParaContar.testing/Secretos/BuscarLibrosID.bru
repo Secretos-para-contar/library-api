@@ -1,0 +1,15 @@
+meta {
+  name: BuscarLibrosID
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://localhost:5101/api/Libros/GetById?id=5
+  body: json
+  auth: inherit
+}
+
+params:query {
+  id: 5
+}

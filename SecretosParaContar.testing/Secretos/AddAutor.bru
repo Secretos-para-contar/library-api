@@ -1,0 +1,20 @@
+meta {
+  name: AddAutor
+  type: http
+  seq: 6
+}
+
+post {
+  url: http://localhost:5101/api/autor/AddAutor
+http://localhost:5101//api/Autor/AddAutor
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": 2,
+    "name": "Walter Riso",
+    "yearOfBirth": 1982
+  }
+}
