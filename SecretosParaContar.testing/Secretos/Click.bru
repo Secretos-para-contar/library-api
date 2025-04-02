@@ -1,0 +1,11 @@
+meta {
+  name: Click
+  type: http
+  seq: 8
+}
+
+put {
+  url: http://localhost:5101/Api/Libros/IncrementClicks/2
+  body: json
+  auth: inherit
+}

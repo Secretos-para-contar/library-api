@@ -59,6 +59,16 @@ public async Task<BaseMessage<Libros>> AddLibro (Libros libro)
         
  }
 
+public async Task<BaseMessage<Libros>> GetById(int id)  
+{
+    var libro = await _unitOfWork.LibroRepository.FindAsync(id);
+
+    return libro != null 
+        ? BuildResponse(new List<Libros> { libro }, "", HttpStatusCode.OK, 1)
+        : BuildResponse(new List<Libros>(), "Libro no encontrado", HttpStatusCode.NotFound, 0);
+}
+
+
 public async Task<BaseMessage<Libros>> FindByName (string Title)
 {
     var lista = await _unitOfWork.LibroRepository.GetAllAsync(x => x.Title.ToLower().Contains(Title.ToLower()));

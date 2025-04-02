@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SecretosParaContar.Business.interfaces;
+using SecretosParaContar.Data.Models;
 
 namespace SecretosParaContar.Controller;
 
@@ -15,6 +16,15 @@ public class AutorController : ControllerBase
     {
         _autorService = autorService;
     }
+
+    [HttpPost]
+    [Route("AddAutor")]
+        public async Task<IActionResult> AddAutor([FromBody] Autor autor)
+    {
+    var result = await _autorService.AddAutor(autor);
+    return Ok(result);
+    }
+
 
     [HttpGet]
     [Route("GetById")]
